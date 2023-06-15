@@ -475,7 +475,7 @@ function toStringList(arr) {
  */
 function sortCitiesArray(arr) {
   // throw new Error('Not implemented');
-  return arr.sort((a, b) => a.country - b.country);
+  return arr.sort((a, b) => a.country.localeCompare(b.country) || a.city.localeCompare(b.city));
 }
 
 /**
@@ -496,8 +496,19 @@ function sortCitiesArray(arr) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  // throw new Error('Not implemented');
+  let iterator = 0;
+  const arr = Array.from({ length: n }, () => 0);
+  return arr.map((i, index, array) => {
+    const temp = Array.of(...array);
+    if (index === iterator) {
+      temp[index] = 1;
+      iterator += 1;
+    }
+
+    return temp;
+  });
 }
 
 /**
@@ -513,8 +524,10 @@ function getIdentityMatrix(/* n */) {
  *     0, 100 => [ 0, 1, 2, ..., 100 ]
  *     3, 3   => [ 3 ]
  */
-function getIntervalArray(/* start, end */) {
-  throw new Error('Not implemented');
+function getIntervalArray(start, end) {
+  // throw new Error('Not implemented');
+  const difference = Math.abs(start - end);
+  return Array.from({ length: difference + 1 }, (_, i) => i + start);
 }
 
 /**
@@ -528,8 +541,9 @@ function getIntervalArray(/* start, end */) {
  *   [ 'a', 'a', 'a', 'a' ]  => [ 'a' ]
  *   [ 1, 1, 2, 2, 3, 3, 4, 4] => [ 1, 2, 3, 4]
  */
-function distinct(/* arr */) {
-  throw new Error('Not implemented');
+function distinct(arr) {
+  // throw new Error('Not implemented');
+  return arr.filter((i, index, array) => array.indexOf(i) === index);
 }
 
 /**
@@ -562,8 +576,13 @@ function distinct(/* arr */) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
-  throw new Error('Not implemented');
+function group(array, keySelector, valueSelector) {
+  // throw new Error('Not implemented');
+  const filtered = array.map((i) => valueSelector(i));
+  keySelector({});
+  // const values = filtered.map((i) => valueSelector(i));
+  // return Object.keys(filtered);
+  return filtered;
 }
 
 
