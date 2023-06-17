@@ -578,11 +578,38 @@ function distinct(arr) {
  */
 function group(array, keySelector, valueSelector) {
   // throw new Error('Not implemented');
-  const filtered = array.map((i) => valueSelector(i));
+  // const filtered = array.map((i) => valueSelector(i));
   keySelector({});
+  valueSelector({});
   // const values = filtered.map((i) => valueSelector(i));
   // return Object.keys(filtered);
-  return filtered;
+  // return filtered;
+
+  //
+  // const keys = array.map(
+  //   (i) => keySelector(i),
+  // ).filter((i, index, arr) => arr.indexOf(i) === index);
+
+
+  // // return keys.map((i) => Array.from({ length: 1 }, () => i));
+  // return keys;
+  //
+  const grouped = [];
+
+  array.map((i, index) => {
+    if (grouped[0] && grouped[0].includes(keySelector(i))) {
+      // grouped[0][1].push(valueSelector(i));
+      grouped[grouped[0].indexOf(keySelector(i))].push(valueSelector(i));
+    } else {
+      grouped[index] = (Array.from({ length: 1 }, () => keySelector(i)));
+      grouped[index].push(
+        Array.from({ length: 1 }, () => valueSelector(i)),
+      );
+    }
+    return i;
+  });
+
+  return grouped;
 }
 
 
