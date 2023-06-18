@@ -46,7 +46,7 @@ function getComposition(/* f, g */) {
  */
 function getPowerFunction(exponent) {
   // throw new Error('Not implemented');
-  return function (num) { return (num ** exponent); };
+  return (num) => num ** exponent;
 }
 
 
@@ -85,9 +85,7 @@ function getPolynom() {
 function memoize(func) {
   // throw new Error('Not implemented');
   const cache = func();
-  return function () {
-    return cache;
-  };
+  return () => cache;
 }
 
 
@@ -190,7 +188,7 @@ function partialUsingArguments(/* fn, ...args1 */) {
  */
 function getIdGeneratorFunction(startFrom) {
   let id = startFrom - 1;
-  return function () {
+  return () => {
     id += 1;
     return id;
   };
