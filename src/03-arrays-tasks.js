@@ -576,11 +576,11 @@ function distinct(arr) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(array, keySelector, valueSelector) {
-  // throw new Error('Not implemented');
+function group(/* array, keySelector, valueSelector */) {
+  throw new Error('Not implemented');
   // const filtered = array.map((i) => valueSelector(i));
-  keySelector({});
-  valueSelector({});
+  // keySelector({});
+  // valueSelector({});
   // const values = filtered.map((i) => valueSelector(i));
   // return Object.keys(filtered);
   // return filtered;
@@ -594,22 +594,22 @@ function group(array, keySelector, valueSelector) {
   // // return keys.map((i) => Array.from({ length: 1 }, () => i));
   // return keys;
   //
-  const grouped = [];
+  // const grouped = [];
 
-  array.map((i, index) => {
-    if (grouped[0] && grouped[0].includes(keySelector(i))) {
-      // grouped[0][1].push(valueSelector(i));
-      grouped[grouped[0].indexOf(keySelector(i))].push(valueSelector(i));
-    } else {
-      grouped[index] = (Array.from({ length: 1 }, () => keySelector(i)));
-      grouped[index].push(
-        Array.from({ length: 1 }, () => valueSelector(i)),
-      );
-    }
-    return i;
-  });
+  // array.map((i, index) => {
+  //   if (grouped[0] && grouped[0].includes(keySelector(i))) {
+  //     // grouped[0][1].push(valueSelector(i));
+  //     grouped[grouped[0].indexOf(keySelector(i))].push(valueSelector(i));
+  //   } else {
+  //     grouped[index] = (Array.from({ length: 1 }, () => keySelector(i)));
+  //     grouped[index].push(
+  //       Array.from({ length: 1 }, () => valueSelector(i)),
+  //     );
+  //   }
+  //   return i;
+  // });
 
-  return grouped;
+  // return grouped;
 }
 
 
@@ -628,6 +628,8 @@ function group(array, keySelector, valueSelector) {
  */
 function selectMany(/* arr, childrenSelector */) {
   throw new Error('Not implemented');
+
+  // return arr.map((i) => childrenSelector(i)).flat();
 }
 
 
@@ -645,6 +647,12 @@ function selectMany(/* arr, childrenSelector */) {
  */
 function getElementByIndexes(/* arr, indexes */) {
   throw new Error('Not implemented');
+  // return indexes.map((i) => {
+  //   const children = arr[i];
+  //   return children[i];
+  // });
+
+  // return indexes.reduce((acc, i) => arr.concat(i), []);
 }
 
 
@@ -668,6 +676,15 @@ function getElementByIndexes(/* arr, indexes */) {
  */
 function swapHeadAndTail(/* arr */) {
   throw new Error('Not implemented');
+  // if (arr.length <= 1) {
+  //   return arr;
+  // }
+  // if (arr.length <= 3) {
+  //   return arr.reverse();
+  // }
+  // return arr.map((i, index) => {
+  //   if ((index + 1) % 2 === 0) return arr[(arr.length - 1) - index];
+  // });
 }
 
 
